@@ -57,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS BUGS COPYING.lib CREDITS ChangeLog FAQ INSTALL NEWS QUICKSTART README RELEASE_NOTES RESOURCES TESTIMONIALS TODO
+%doc AUTHORS BUGS CREDITS ChangeLog FAQ INSTALL NEWS QUICKSTART README RELEASE_NOTES RESOURCES TESTIMONIALS TODO
 %dir %{_datadir}/pear/%{name}
 %dir %{_datadir}/pear/%{name}/plugins
 %{_datadir}/pear/%{name}/*.class.php
