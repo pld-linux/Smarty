@@ -11,12 +11,11 @@ Source0:	http://smarty.php.net/distributions/%{name}-%{version}.tar.gz
 # Source0-md5:	9acb557dc4e344fadc2ab2270c74dfa2
 Source1:	http://smarty.php.net/distributions/manual/en/%{name}-%{version}-docs.tar.gz
 # Source1-md5:	22bd33a9b9cf497e80eb21659b4c2163
+BuildRequires:	rpm-php-pearprov >= 4.3
 Requires:	php
 Requires:	php-pear
-BuildRequires:	rpm-php-pearprov
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-%define		_noautoreq	"pear(?)"
 
 %description
 Smarty is a template engine for PHP. Smarty provides your basic
