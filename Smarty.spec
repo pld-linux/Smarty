@@ -1,4 +1,4 @@
-# $Id: Smarty.spec,v 1.1 2003-02-22 00:00:36 baseciq Exp $
+# $Id: Smarty.spec,v 1.1.2.1 2003-07-11 12:00:17 eothane Exp $
 %define		_doc_version	2.4.0
 Summary:	Template engine for PHP
 Summary(pl):	System template'owy dla PHP
