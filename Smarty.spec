@@ -14,6 +14,7 @@ Requires:	php-pear
 BuildRequires:	rpm-php-pearprov
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+%define		_noautoreq	"pear(?)"
 
 %description
 Smarty is a template engine for PHP. Smarty provides your basic
