@@ -1,16 +1,16 @@
-%define		_doc_version	2.6.4
+%define		_doc_version	2.6.5
 %include	/usr/lib/rpm/macros.php
 Summary:	Template engine for PHP
 Summary(pl):	System szablonów dla PHP
 Name:		Smarty
-Version:	2.6.5
-Release:	2
+Version:	2.6.6
+Release:	1
 License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://smarty.php.net/distributions/%{name}-%{version}.tar.gz
-# Source0-md5:	d42e97144beefe362cec4c6d94a758c9
+# Source0-md5:	ef46a28da54e51454aba882f7bc04052
 Source1:	http://smarty.php.net/distributions/manual/en/%{name}-%{_doc_version}-docs.tar.gz
-# Source1-md5:	a1f0a45b67db318fc274e2f939d011ba
+# Source1-md5:	724b8e508fd052654a2bd59615518cab
 URL:		http://smarty.php.net/
 BuildRequires:	rpm-php-pearprov >= 4.3
 Requires:	php
@@ -51,11 +51,11 @@ Dokumentacja do systemu szablonów Smarty.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/{core,plugins}
+install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/{internals,plugins}
 
 install libs/{Config_File,Smarty{,_Compiler}}.class.php $RPM_BUILD_ROOT%{php_pear_dir}/%{name}
 install libs/debug.tpl $RPM_BUILD_ROOT%{php_pear_dir}/%{name}
-install libs/core/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/core
+install libs/internals/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/internals
 install libs/plugins/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/plugins
 
 %clean
@@ -65,11 +65,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc BUGS ChangeLog FAQ INSTALL NEWS README RELEASE_NOTES TODO
 %dir %{php_pear_dir}/%{name}
-%dir %{php_pear_dir}/%{name}/core
+%dir %{php_pear_dir}/%{name}/internals
 %dir %{php_pear_dir}/%{name}/plugins
 %{php_pear_dir}/%{name}/*.class.php
 %{php_pear_dir}/%{name}/debug.tpl
-%{php_pear_dir}/%{name}/core/*.php
+%{php_pear_dir}/%{name}/internals/*.php
 %{php_pear_dir}/%{name}/plugins/*.php
 
 %files doc
