@@ -3,12 +3,12 @@
 Summary:	Template engine for PHP
 Summary(pl):	System szablonów dla PHP
 Name:		Smarty
-Version:	2.6.3
-Release:	2
+Version:	2.6.5
+Release:	1
 License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://smarty.php.net/distributions/%{name}-%{version}.tar.gz
-# Source0-md5:	cbbe9864594368de3e8348c17eb19a3b
+# Source0-md5:	d42e97144beefe362cec4c6d94a758c9
 Source1:	http://smarty.php.net/distributions/manual/en/%{name}-%{_doc_version}-docs.tar.gz
 # Source1-md5:	17bf33b25c3fe093d51c44e4a8d6ec94
 URL:		http://smarty.php.net/
