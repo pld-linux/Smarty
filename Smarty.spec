@@ -1,16 +1,16 @@
-%define		_doc_version	2.6.0
+%define		_doc_version	2.6.2
 %include	/usr/lib/rpm/macros.php
 Summary:	Template engine for PHP
 Summary(pl):	System szablonów dla PHP
 Name:		Smarty
-Version:	2.6.1
+Version:	2.6.2
 Release:	1
 License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://smarty.php.net/distributions/%{name}-%{version}.tar.gz
-# Source0-md5:	f4f2cc1ae1762f0e11d23defb56e6806
+# Source0-md5:	876313391dcf6452e3867169230ec4d9
 Source1:	http://smarty.php.net/distributions/manual/en/%{name}-%{_doc_version}-docs.tar.gz
-# Source1-md5:	3035699c5785c06b0492832d372ffc62
+# Source1-md5:	fd5e90f19a002777f3fed6fc51106ce4
 BuildRequires:	rpm-php-pearprov >= 4.3
 Requires:	php
 Requires:	php-pear
