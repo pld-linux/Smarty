@@ -1,4 +1,4 @@
-%define		_doc_version	2.4.0
+# %define		_doc_version	2.4.0
 Summary:	Template engine for PHP
 Summary(pl):	System szablonów dla PHP
 Name:		Smarty
@@ -7,7 +7,7 @@ Release:	1
 License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://smarty.php.net/distributions/%{name}-%{version}.tar.gz
-Source1:	http://smarty.php.net/distributions/manual/en/%{name}-%{_doc_version}-docs.tar.gz
+Source1:	http://smarty.php.net/distributions/manual/en/%{name}-%{version}-docs.tar.gz
 Requires:	php
 Requires:	php-pear
 BuildArch:	noarch
