@@ -2,7 +2,7 @@
 Summary:	Template engine for PHP
 Summary(pl):	System szablonów dla PHP
 Name:		Smarty
-Version:	2.4.2
+Version:	2.5.0
 Release:	1
 License:	LGPL
 Group:		Development/Languages/PHP
@@ -48,16 +48,16 @@ Dokumentacja do systemu szablonów Smarty.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/pear/%{name}/plugins
 
-install {Config_File,Smarty{,_Compiler}}.class.php $RPM_BUILD_ROOT%{_datadir}/pear/%{name}
-install debug.tpl $RPM_BUILD_ROOT%{_datadir}/pear/%{name}
-install plugins/*.php $RPM_BUILD_ROOT%{_datadir}/pear/%{name}/plugins
+install libs/{Config_File,Smarty{,_Compiler}}.class.php $RPM_BUILD_ROOT%{_datadir}/pear/%{name}
+install libs/debug.tpl $RPM_BUILD_ROOT%{_datadir}/pear/%{name}
+install libs/plugins/*.php $RPM_BUILD_ROOT%{_datadir}/pear/%{name}/plugins
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS BUGS CREDITS ChangeLog FAQ INSTALL NEWS QUICKSTART README RELEASE_NOTES RESOURCES TESTIMONIALS TODO
+%doc BUGS ChangeLog FAQ INSTALL NEWS README RELEASE_NOTES TODO
 %dir %{_datadir}/pear/%{name}
 %dir %{_datadir}/pear/%{name}/plugins
 %{_datadir}/pear/%{name}/*.class.php
