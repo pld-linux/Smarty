@@ -50,10 +50,11 @@ Dokumentacja do systemu szablonów Smarty.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/plugins
+install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/{core,plugins}
 
 install libs/{Config_File,Smarty{,_Compiler}}.class.php $RPM_BUILD_ROOT%{php_pear_dir}/%{name}
 install libs/debug.tpl $RPM_BUILD_ROOT%{php_pear_dir}/%{name}
+install libs/core/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/core
 install libs/plugins/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/plugins
 
 %clean
@@ -63,9 +64,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc BUGS ChangeLog FAQ INSTALL NEWS README RELEASE_NOTES TODO
 %dir %{php_pear_dir}/%{name}
+%dir %{php_pear_dir}/%{name}/core
 %dir %{php_pear_dir}/%{name}/plugins
 %{php_pear_dir}/%{name}/*.class.php
 %{php_pear_dir}/%{name}/debug.tpl
+%{php_pear_dir}/%{name}/core/*.php
 %{php_pear_dir}/%{name}/plugins/*.php
 
 %files doc
