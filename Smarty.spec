@@ -1,4 +1,4 @@
-# $Id: Smarty.spec,v 1.1 2003-02-22 00:00:36 baseciq Exp $
+# $Id: Smarty.spec,v 1.2 2003-03-17 21:13:33 adamg Exp $
 %define		_doc_version	2.4.0
 Summary:	Template engine for PHP
 Summary(pl):	System template'owy dla PHP
@@ -13,7 +13,6 @@ Requires:	php
 Requires:	php-pear
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Vendor:		Rulez.PL
 
 %description
 Smarty is a template engine for PHP. Smarty provides your basic
@@ -24,7 +23,7 @@ making all of this functionality as easy as possible to use for both
 programmers and template designers.
 
 %description -l pl
-Smarty jest systemem template'owum dla PHP. Smarty pozwala na
+Smarty jest systemem template'owym dla PHP. Smarty pozwala na
 podstawowe podstawianie warto¶ci zmiennych i na zaawansowane operacje
 na tablicach.
 
