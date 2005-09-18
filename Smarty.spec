@@ -4,7 +4,7 @@ Summary:	Template engine for PHP
 Summary(pl):	System szablonów dla PHP
 Name:		Smarty
 Version:	2.6.10
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://smarty.php.net/distributions/%{name}-%{version}.tar.gz
@@ -13,7 +13,7 @@ Source1:	http://smarty.php.net/distributions/manual/en/%{name}-%{_doc_version}-d
 # Source1-md5:	b64311248f9666fa579545dc45bdc789
 URL:		http://smarty.php.net/
 BuildRequires:	rpm-php-pearprov >= 4.3
-Requires:	php
+Requires:	php-common
 Requires:	php-pear
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
