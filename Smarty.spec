@@ -4,7 +4,7 @@ Summary:	Template engine for PHP
 Summary(pl):	System szablonów dla PHP
 Name:		Smarty
 Version:	2.6.10
-Release:	3
+Release:	4
 License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://smarty.php.net/distributions/%{name}-%{version}.tar.gz
@@ -66,7 +66,7 @@ ln -s %{_smartydir} $RPM_BUILD_ROOT%{php_pear_dir}/%{name}
 rm -rf $RPM_BUILD_ROOT
 
 # make compat symlink, the symlink is discarded using %ghost on package uninstall
-%triggerpostun -- Smarty < 2.6.10-1.2
+%triggerpostun -- Smarty < 2.6.10-4
 if [ -d %{php_pear_dir}/%{name}/plugins ]; then
 	mv %{php_pear_dir}/%{name}/plugins/* %{_smartydir}/plugins
 	rmdir %{php_pear_dir}/%{name}/plugins 2>/dev/null
