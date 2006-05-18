@@ -4,13 +4,14 @@ Summary:	Template engine for PHP
 Summary(pl):	System szablonów dla PHP
 Name:		Smarty
 Version:	2.6.13
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://smarty.php.net/distributions/%{name}-%{version}.tar.gz
 # Source0-md5:	2ca9bf476cf0920b9d4fee69633f6f65
 Source1:	http://smarty.php.net/distributions/manual/en/%{name}-%{_doc_version}-docs.tar.gz
 # Source1-md5:	7a0eaeda82eef073c87997141ee6207c
+Source2:	%{name}-function.html_input_image.php
 URL:		http://smarty.php.net/
 BuildRequires:	rpm-php-pearprov >= 4.3
 Requires:	php-common
@@ -58,6 +59,7 @@ install libs/{Config_File,Smarty{,_Compiler}}.class.php $RPM_BUILD_ROOT%{_smarty
 install libs/debug.tpl $RPM_BUILD_ROOT%{_smartydir}
 install libs/internals/*.php $RPM_BUILD_ROOT%{_smartydir}/internals
 install libs/plugins/*.php $RPM_BUILD_ROOT%{_smartydir}/plugins
+install %{SOURCE2} $RPM_BUILD_ROOT%{_smartydir}/plugins/function.html_input_image.php
 
 # backards compatible
 ln -s %{_smartydir} $RPM_BUILD_ROOT%{php_pear_dir}/%{name}
