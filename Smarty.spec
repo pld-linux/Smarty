@@ -4,7 +4,7 @@ Summary:	Template engine for PHP
 Summary(pl):	System szablonów dla PHP
 Name:		Smarty
 Version:	2.6.14
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://smarty.php.net/distributions/%{name}-%{version}.tar.gz
@@ -75,6 +75,9 @@ if [ -d %{php_pear_dir}/%{name}/plugins ]; then
 fi
 rmdir %{php_pear_dir}/%{name} 2>/dev/null || mv -v %{php_pear_dir}/%{name}{,.rpmsave}
 ln -s %{_smartydir} %{php_pear_dir}/%{name}
+
+%post
+[ -e %{php_pear_dir}/%{name} ] || ln -s %{_smartydir} %{php_pear_dir}/%{name}
 
 %files
 %defattr(644,root,root,755)
