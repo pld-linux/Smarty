@@ -1,7 +1,7 @@
 %define		_doc_version	2.6.14
 %include	/usr/lib/rpm/macros.php
 Summary:	Template engine for PHP
-Summary(pl):	System szablonów dla PHP
+Summary(pl.UTF-8):   System szablonÃ³w dla PHP
 Name:		Smarty
 Version:	2.6.16
 Release:	1
@@ -28,25 +28,25 @@ as configuration files, template functions, variable modifiers, and
 making all of this functionality as easy as possible to use for both
 programmers and template designers.
 
-%description -l pl
-Smarty jest systemem szablonów dla PHP. Pozwala na podstawowe
-podstawianie warto¶ci zmiennych oraz dynamiczne operacje na blokach;
-idzie o krok dalej, aby byæ "m±drym" silnikiem szablonów, dodaj±c
-takie mo¿liwo¶ci jak pliki konfiguracyjne, funkcje, zmienne
-modyfikatory oraz czyni±c ca³± funkcjonalno¶æ jak naj³atwiejsz± w
-u¿yciu jednocze¶nie dla programistów i projektantów szablonów.
+%description -l pl.UTF-8
+Smarty jest systemem szablonÃ³w dla PHP. Pozwala na podstawowe
+podstawianie wartoÅ›ci zmiennych oraz dynamiczne operacje na blokach;
+idzie o krok dalej, aby byÄ‡ "mÄ…drym" silnikiem szablonÃ³w, dodajÄ…c
+takie moÅ¼liwoÅ›ci jak pliki konfiguracyjne, funkcje, zmienne
+modyfikatory oraz czyniÄ…c caÅ‚Ä… funkcjonalnoÅ›Ä‡ jak najÅ‚atwiejszÄ… w
+uÅ¼yciu jednoczeÅ›nie dla programistÃ³w i projektantÃ³w szablonÃ³w.
 
 %package doc
 Summary:	Template engine for PHP - documentation
-Summary(pl):	System szablonów dla PHP - dokumentacja
+Summary(pl.UTF-8):   System szablonÃ³w dla PHP - dokumentacja
 Version:	%{_doc_version}
 Group:		Development/Languages/PHP
 
 %description doc
 Documentation for Smarty template engine.
 
-%description doc -l pl
-Dokumentacja do systemu szablonów Smarty.
+%description doc -l pl.UTF-8
+Dokumentacja do systemu szablonÃ³w Smarty.
 
 %prep
 %setup -q -a 1
