@@ -1,7 +1,7 @@
 %define		_doc_version	2.6.14
 %include	/usr/lib/rpm/macros.php
 Summary:	Template engine for PHP
-Summary(pl.UTF-8):   System szablonów dla PHP
+Summary(pl.UTF-8):	System szablonów dla PHP
 Name:		Smarty
 Version:	2.6.16
 Release:	1
@@ -38,7 +38,7 @@ użyciu jednocześnie dla programistów i projektantów szablonów.
 
 %package doc
 Summary:	Template engine for PHP - documentation
-Summary(pl.UTF-8):   System szablonów dla PHP - dokumentacja
+Summary(pl.UTF-8):	System szablonów dla PHP - dokumentacja
 Version:	%{_doc_version}
 Group:		Development/Languages/PHP
 
