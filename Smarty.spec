@@ -1,16 +1,17 @@
-%define		_doc_version	2.6.11
+%define		_doc_version	2.6.14
 %include	/usr/lib/rpm/macros.php
 Summary:	Template engine for PHP
 Summary(pl):	System szablonów dla PHP
 Name:		Smarty
-Version:	2.6.13
-Release:	1
+Version:	2.6.18
+Release:	2
 License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://smarty.php.net/distributions/%{name}-%{version}.tar.gz
-# Source0-md5:	2ca9bf476cf0920b9d4fee69633f6f65
+# Source0-md5:	cd9b9c78b43c0d0490b71111b2fe1a99
 Source1:	http://smarty.php.net/distributions/manual/en/%{name}-%{_doc_version}-docs.tar.gz
-# Source1-md5:	7a0eaeda82eef073c87997141ee6207c
+# Source1-md5:	357510250885aab057853949e35845c7
+Source2:	%{name}-function.html_input_image.php
 URL:		http://smarty.php.net/
 BuildRequires:	rpm-php-pearprov >= 4.3
 Requires:	php-common
@@ -58,6 +59,7 @@ install libs/{Config_File,Smarty{,_Compiler}}.class.php $RPM_BUILD_ROOT%{_smarty
 install libs/debug.tpl $RPM_BUILD_ROOT%{_smartydir}
 install libs/internals/*.php $RPM_BUILD_ROOT%{_smartydir}/internals
 install libs/plugins/*.php $RPM_BUILD_ROOT%{_smartydir}/plugins
+install %{SOURCE2} $RPM_BUILD_ROOT%{_smartydir}/plugins/function.html_input_image.php
 
 # backards compatible
 ln -s %{_smartydir} $RPM_BUILD_ROOT%{php_pear_dir}/%{name}
@@ -73,6 +75,9 @@ if [ -d %{php_pear_dir}/%{name}/plugins ]; then
 fi
 rmdir %{php_pear_dir}/%{name} 2>/dev/null || mv -v %{php_pear_dir}/%{name}{,.rpmsave}
 ln -s %{_smartydir} %{php_pear_dir}/%{name}
+
+%post
+[ -e %{php_pear_dir}/%{name} ] || ln -s %{_smartydir} %{php_pear_dir}/%{name}
 
 %files
 %defattr(644,root,root,755)
