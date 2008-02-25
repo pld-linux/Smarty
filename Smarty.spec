@@ -39,6 +39,7 @@ użyciu jednocześnie dla programistów i projektantów szablonów.
 %package doc
 Summary:	Template engine for PHP - documentation
 Summary(pl.UTF-8):	System szablonów dla PHP - dokumentacja
+Version:	%{_doc_version}
 Group:		Development/Languages/PHP
 
 %description doc
