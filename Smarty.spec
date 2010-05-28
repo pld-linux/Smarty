@@ -5,8 +5,8 @@ Summary:	Template engine for PHP
 Summary(pl.UTF-8):	System szablonów dla PHP
 Name:		Smarty
 Version:	2.6.26
-Release:	2
-License:	LGPL
+Release:	3
+License:	LGPL v2.1+
 Group:		Development/Languages/PHP
 Source0:	http://www.smarty.net/distributions/%{name}-%{version}.tar.gz
 # Source0-md5:	e0da351443b8613e1013c481ab30cb84
@@ -14,6 +14,7 @@ Source0:	http://www.smarty.net/distributions/%{name}-%{version}.tar.gz
 Source1:	http://www.smarty.net/distributions/manual/en/%{name}-%{doc_version}-docs.tar.gz
 # Source1-md5:	5123152dd248898a84b96b806f551e78
 Source2:	%{name}-function.html_input_image.php
+Patch0:		path.patch
 URL:		http://www.smarty.net/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Requires:	php-common >= 4:%{php_min_version}
@@ -55,19 +56,24 @@ Dokumentacja do systemu szablonów Smarty.
 
 %prep
 %setup -q -a1
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{appdir}/{internals,plugins},%{php_pear_dir}}
 
-cp -a libs/{Config_File,Smarty{,_Compiler}}.class.php $RPM_BUILD_ROOT%{appdir}
+cp -a libs/Smarty.class.php $RPM_BUILD_ROOT%{php_data_dir}
+cp -a libs/{Config_File,Smarty_Compiler}.class.php $RPM_BUILD_ROOT%{appdir}
 cp -a libs/debug.tpl $RPM_BUILD_ROOT%{appdir}
 cp -a libs/internals/*.php $RPM_BUILD_ROOT%{appdir}/internals
 cp -a libs/plugins/*.php $RPM_BUILD_ROOT%{appdir}/plugins
 cp -a %{SOURCE2} $RPM_BUILD_ROOT%{appdir}/plugins/function.html_input_image.php
 
-# backards compatible
+# backards compatible with pear dir
 ln -s %{appdir} $RPM_BUILD_ROOT%{php_pear_dir}/%{name}
+
+# backards compatible with entry point in subdir
+ln -s ../Smarty.class.php $RPM_BUILD_ROOT%{appdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -87,11 +93,15 @@ ln -s %{appdir} %{php_pear_dir}/%{name}
 %files
 %defattr(644,root,root,755)
 %doc BUGS ChangeLog FAQ INSTALL NEWS README RELEASE_NOTES TODO
+# entry point in include_path
+%{php_data_dir}/Smarty.class.php
+
+# app itself
 %dir %{appdir}
 %dir %{appdir}/internals
 %dir %{appdir}/plugins
-%{appdir}/Config_File.class.php
 %{appdir}/Smarty.class.php
+%{appdir}/Config_File.class.php
 %{appdir}/Smarty_Compiler.class.php
 %{appdir}/debug.tpl
 %{appdir}/internals/*.php

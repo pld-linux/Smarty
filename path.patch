@@ -1,0 +1,11 @@
+--- Smarty-2.6.26/libs/Smarty.class.php~	2009-06-18 17:47:04.000000000 +0300
++++ Smarty-2.6.26/libs/Smarty.class.php	2010-05-28 14:46:48.810070152 +0300
+@@ -46,7 +46,7 @@
+  */
+ 
+ if (!defined('SMARTY_DIR')) {
+-    define('SMARTY_DIR', dirname(__FILE__) . DIRECTORY_SEPARATOR);
++    define('SMARTY_DIR', '/usr/share/php/Smarty/');
+ }
+ 
+ if (!defined('SMARTY_CORE_DIR')) {
