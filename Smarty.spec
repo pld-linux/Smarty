@@ -1,4 +1,5 @@
 %define		doc_version	2.6.14
+%define		php_min_version 5.0.0
 %include	/usr/lib/rpm/macros.php
 Summary:	Template engine for PHP
 Summary(pl.UTF-8):	System szablonów dla PHP
@@ -14,12 +15,15 @@ Source1:	http://www.smarty.net/distributions/manual/en/%{name}-%{doc_version}-do
 # Source1-md5:	5123152dd248898a84b96b806f551e78
 Source2:	%{name}-function.html_input_image.php
 URL:		http://www.smarty.net/
-BuildRequires:	rpm-php-pearprov >= 4.3
-Requires:	php-common
+BuildRequires:	rpm-php-pearprov >= 4.4.2-11
+Requires:	php-common >= 4:%{php_min_version}
+Requires:	php-date
+Requires:	php-pcre
+Requires:	php-tokenizer
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_smartydir	%{_datadir}/php/Smarty
+%define		appdir	%{php_data_dir}/Smarty
 
 %description
 Smarty is a template engine for PHP. Smarty provides your basic
@@ -50,20 +54,20 @@ Documentation for Smarty template engine.
 Dokumentacja do systemu szablonów Smarty.
 
 %prep
-%setup -q -a 1
+%setup -q -a1
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_smartydir}/{internals,plugins},%{php_pear_dir}}
+install -d $RPM_BUILD_ROOT{%{appdir}/{internals,plugins},%{php_pear_dir}}
 
-install libs/{Config_File,Smarty{,_Compiler}}.class.php $RPM_BUILD_ROOT%{_smartydir}
-install libs/debug.tpl $RPM_BUILD_ROOT%{_smartydir}
-install libs/internals/*.php $RPM_BUILD_ROOT%{_smartydir}/internals
-install libs/plugins/*.php $RPM_BUILD_ROOT%{_smartydir}/plugins
-install %{SOURCE2} $RPM_BUILD_ROOT%{_smartydir}/plugins/function.html_input_image.php
+cp -a libs/{Config_File,Smarty{,_Compiler}}.class.php $RPM_BUILD_ROOT%{appdir}
+cp -a libs/debug.tpl $RPM_BUILD_ROOT%{appdir}
+cp -a libs/internals/*.php $RPM_BUILD_ROOT%{appdir}/internals
+cp -a libs/plugins/*.php $RPM_BUILD_ROOT%{appdir}/plugins
+cp -a %{SOURCE2} $RPM_BUILD_ROOT%{appdir}/plugins/function.html_input_image.php
 
 # backards compatible
-ln -s %{_smartydir} $RPM_BUILD_ROOT%{php_pear_dir}/%{name}
+ln -s %{appdir} $RPM_BUILD_ROOT%{php_pear_dir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -71,27 +75,29 @@ rm -rf $RPM_BUILD_ROOT
 # make compat symlink, the symlink is discarded using %ghost on package uninstall
 %triggerpostun -- Smarty < 2.6.10-4
 if [ -d %{php_pear_dir}/%{name}/plugins ]; then
-	mv %{php_pear_dir}/%{name}/plugins/* %{_smartydir}/plugins
+	mv %{php_pear_dir}/%{name}/plugins/* %{appdir}/plugins
 	rmdir %{php_pear_dir}/%{name}/plugins 2>/dev/null
 fi
 rmdir %{php_pear_dir}/%{name} 2>/dev/null || mv -v %{php_pear_dir}/%{name}{,.rpmsave}
-ln -s %{_smartydir} %{php_pear_dir}/%{name}
+ln -s %{appdir} %{php_pear_dir}/%{name}
 
 %post
-[ -e %{php_pear_dir}/%{name} ] || ln -s %{_smartydir} %{php_pear_dir}/%{name}
+[ -e %{php_pear_dir}/%{name} ] || ln -s %{appdir} %{php_pear_dir}/%{name}
 
 %files
 %defattr(644,root,root,755)
 %doc BUGS ChangeLog FAQ INSTALL NEWS README RELEASE_NOTES TODO
-%dir %{_smartydir}
-%dir %{_smartydir}/internals
-%dir %{_smartydir}/plugins
-%{_smartydir}/*.class.php
-%{_smartydir}/debug.tpl
-%{_smartydir}/internals/*.php
-%{_smartydir}/plugins/*.php
+%dir %{appdir}
+%dir %{appdir}/internals
+%dir %{appdir}/plugins
+%{appdir}/Config_File.class.php
+%{appdir}/Smarty.class.php
+%{appdir}/Smarty_Compiler.class.php
+%{appdir}/debug.tpl
+%{appdir}/internals/*.php
+%{appdir}/plugins/*.php
 
-# for the sake of bc
+# for the sake of bc when installed to pear dir
 %ghost %{php_pear_dir}/%{name}
 
 %files doc
