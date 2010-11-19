@@ -1,0 +1,46 @@
+--- Smarty-2.6.26/libs/plugins/modifier.mb_truncate.php	2009-06-18 14:46:27.000000000 +0000
++++ Smarty-2.6.26/libs/plugins/modifier.mb_truncate.php	2010-11-19 11:34:18.704932307 +0000
+@@ -10,21 +10,24 @@
+  * Smarty truncate modifier plugin
+  *
+  * Type:     modifier<br>
+- * Name:     truncate<br>
++ * Name:     mb_truncate<br>
+  * Purpose:  Truncate a string to a certain length if necessary,
+  *           optionally splitting in the middle of a word, and
+  *           appending the $etc string or inserting $etc into the middle.
++ *           This version also supports multibyte strings.
+  * @link http://smarty.php.net/manual/en/language.modifier.truncate.php
+  *          truncate (Smarty online manual)
+- * @author   Monte Ohrt <monte at ohrt dot com>
++ * @author   Guy Rutenberg <guyrutenberg@gmail.com> based on the original 
++ *           truncate by Monte Ohrt <monte at ohrt dot com>
+  * @param string
+  * @param integer
+  * @param string
++ * @param string
+  * @param boolean
+  * @param boolean
+  * @return string
+  */
+-function smarty_modifier_truncate($string, $length = 80, $etc = '...',
++function smarty_modifier_mb_truncate($string, $length = 80, $etc = '...', $charset='UTF-8',
+                                   $break_words = false, $middle = false)
+ {
+     if ($length == 0)
+@@ -33,12 +36,12 @@
+     if (strlen($string) > $length) {
+         $length -= min($length, strlen($etc));
+         if (!$break_words && !$middle) {
+-            $string = preg_replace('/\s+?(\S+)?$/', '', substr($string, 0, $length+1));
++            $string = preg_replace('/\s+?(\S+)?$/', '', mb_substr($string, 0, $length+1, $charset));
+         }
+         if(!$middle) {
+-            return substr($string, 0, $length) . $etc;
++            return mb_substr($string, 0, $length, $charset) . $etc;
+         } else {
+-            return substr($string, 0, $length/2) . $etc . substr($string, -$length/2);
++            return mb_substr($string, 0, $length/2, $charset) . $etc . mb_substr($string, -$length/2, $charset);
+         }
+     } else {
+         return $string;

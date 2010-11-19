@@ -5,7 +5,7 @@ Summary:	Template engine for PHP
 Summary(pl.UTF-8):	System szablonów dla PHP
 Name:		Smarty
 Version:	2.6.26
-Release:	3
+Release:	4
 License:	LGPL v2.1+
 Group:		Development/Languages/PHP
 Source0:	http://www.smarty.net/distributions/%{name}-%{version}.tar.gz
@@ -15,6 +15,7 @@ Source1:	http://www.smarty.net/distributions/manual/en/%{name}-%{doc_version}-do
 # Source1-md5:	5123152dd248898a84b96b806f551e78
 Source2:	%{name}-function.html_input_image.php
 Patch0:		path.patch
+Patch1:		modifier.mb_truncate.patch
 URL:		http://www.smarty.net/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Requires:	php-common >= 4:%{php_min_version}
@@ -57,6 +58,8 @@ Dokumentacja do systemu szablonów Smarty.
 %prep
 %setup -q -a1
 %patch0 -p1
+cp -a libs/plugins/modifier.{,mb_}truncate.php
+%patch1 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
