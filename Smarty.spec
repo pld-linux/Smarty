@@ -1,23 +1,24 @@
-%define		doc_version	2.6.14
-%define		php_min_version 5.0.0
+%define		doc_version	3.0
+%define		php_min_version 5.2.0
 %include	/usr/lib/rpm/macros.php
 Summary:	Template engine for PHP
 Summary(pl.UTF-8):	System szablonów dla PHP
 Name:		Smarty
-Version:	2.6.26
-Release:	4
+Version:	3.0.5
+Release:	0.1
 License:	LGPL v2.1+
 Group:		Development/Languages/PHP
-Source0:	http://www.smarty.net/distributions/%{name}-%{version}.tar.gz
-# Source0-md5:	e0da351443b8613e1013c481ab30cb84
-# Source1Download: http://www.smarty.net/download-docs.php
-Source1:	http://www.smarty.net/distributions/manual/en/%{name}-%{doc_version}-docs.tar.gz
-# Source1-md5:	5123152dd248898a84b96b806f551e78
+Source0:	http://www.smarty.net/files/%{name}-%{version}.tar.gz
+# Source0-md5:	f7483eaa36ec72337827060076296478
+# Source1Download: http://www.smarty.net/documentation
+Source1:	http://www.smarty.net/files/docs/manual-en-%{doc_version}.zip
+# Source1-md5:	8db376266f1313927cc8e112f2526e21
 Source2:	%{name}-function.html_input_image.php
 Patch0:		path.patch
 Patch1:		modifier.mb_truncate.patch
 URL:		http://www.smarty.net/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
+BuildRequires:	unzip
 Requires:	php-common >= 4:%{php_min_version}
 Requires:	php-date
 Requires:	php-pcre
@@ -59,17 +60,16 @@ Dokumentacja do systemu szablonów Smarty.
 %setup -q -a1
 %patch0 -p1
 cp -a libs/plugins/modifier.{,mb_}truncate.php
-%patch1 -p1
+#%patch1 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{appdir}/{internals,plugins},%{php_pear_dir}}
+install -d $RPM_BUILD_ROOT{%{appdir}/{plugins,sysplugins},%{php_pear_dir}}
 
 cp -a libs/Smarty.class.php $RPM_BUILD_ROOT%{php_data_dir}
-cp -a libs/{Config_File,Smarty_Compiler}.class.php $RPM_BUILD_ROOT%{appdir}
 cp -a libs/debug.tpl $RPM_BUILD_ROOT%{appdir}
-cp -a libs/internals/*.php $RPM_BUILD_ROOT%{appdir}/internals
 cp -a libs/plugins/*.php $RPM_BUILD_ROOT%{appdir}/plugins
+cp -a libs/sysplugins/*.php $RPM_BUILD_ROOT%{appdir}/sysplugins
 cp -a %{SOURCE2} $RPM_BUILD_ROOT%{appdir}/plugins/function.html_input_image.php
 
 # backards compatible with pear dir
@@ -95,24 +95,22 @@ ln -s %{appdir} %{php_pear_dir}/%{name}
 
 %files
 %defattr(644,root,root,755)
-%doc BUGS ChangeLog FAQ INSTALL NEWS README RELEASE_NOTES TODO
+%doc README SMARTY2_BC_NOTES
 # entry point in include_path
 %{php_data_dir}/Smarty.class.php
 
 # app itself
 %dir %{appdir}
-%dir %{appdir}/internals
 %dir %{appdir}/plugins
+%dir %{appdir}/sysplugins
 %{appdir}/Smarty.class.php
-%{appdir}/Config_File.class.php
-%{appdir}/Smarty_Compiler.class.php
 %{appdir}/debug.tpl
-%{appdir}/internals/*.php
 %{appdir}/plugins/*.php
+%{appdir}/sysplugins/*.php
 
 # for the sake of bc when installed to pear dir
 %ghost %{php_pear_dir}/%{name}
 
 %files doc
 %defattr(644,root,root,755)
-%doc manual/*
+%doc demo/*
