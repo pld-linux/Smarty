@@ -1,4 +1,4 @@
-%define		main_version	2.6.29
+%define		main_version	2.6.30
 %define		doc_version	2.6.14
 %define		php_min_version 5.0.0
 %include	/usr/lib/rpm/macros.php
@@ -10,7 +10,7 @@ Release:	1
 License:	LGPL v2.1+
 Group:		Development/Languages/PHP
 Source0:	https://github.com/smarty-php/smarty/archive/v%{version}/smarty-%{version}.tar.gz
-# Source0-md5:	0a40794cbe0be0b42ef29e155a99932f
+# Source0-md5:	44d4672164062ff9a347e8c750ef448e
 # Source1Download: http://www.smarty.net/download-docs.php
 Source1:	http://www.smarty.net/distributions/manual/en/%{name}-%{doc_version}-docs.tar.gz
 # Source1-md5:	5123152dd248898a84b96b806f551e78
