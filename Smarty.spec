@@ -1,7 +1,6 @@
 %define		main_version	2.6.31
 %define		doc_version	2.6.14
 %define		php_min_version 5.0.0
-%include	/usr/lib/rpm/macros.php
 Summary:	Template engine for PHP
 Summary(pl.UTF-8):	System szablonów dla PHP
 Name:		Smarty
