@@ -1,4 +1,4 @@
-%define		main_version	2.6.31
+%define		main_version	2.6.33
 %define		doc_version	2.6.14
 %define		php_min_version 5.0.0
 Summary:	Template engine for PHP
@@ -9,14 +9,14 @@ Release:	1
 License:	LGPL v2.1+
 Group:		Development/Languages/PHP
 Source0:	https://github.com/smarty-php/smarty/archive/v%{version}/smarty-%{version}.tar.gz
-# Source0-md5:	49f8c7f60d2c551589f937082a7faaa5
+# Source0-md5:	15210afa84dc2f20c1b3b0baf95ef3f1
 # Source1Download: http://www.smarty.net/download-docs.php
 Source1:	http://www.smarty.net/distributions/manual/en/%{name}-%{doc_version}-docs.tar.gz
 # Source1-md5:	5123152dd248898a84b96b806f551e78
 Source2:	%{name}-function.html_input_image.php
 Patch0:		path.patch
 Patch1:		modifier.mb_truncate.patch
-URL:		http://www.smarty.net/
+URL:		https://www.smarty.net/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Requires:	php(core) >= %{php_min_version}
 Requires:	php(date)
