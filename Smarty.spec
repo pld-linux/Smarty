@@ -57,9 +57,9 @@ Dokumentacja do systemu szablonów Smarty.
 
 %prep
 %setup -qn smarty-%{main_version} -a1
-%patch0 -p1
+%patch -P0 -p1
 cp -a libs/plugins/modifier.{,mb_}truncate.php
-%patch1 -p1
+%patch -P1 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
